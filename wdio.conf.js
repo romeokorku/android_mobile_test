@@ -27,7 +27,7 @@ const path = require('path');
     //
     specs: [
         // ToDo: define location for spec files here
-        './test/specs/**/*.js'
+        './test/specs/**/android-package*.js'
     ],
     // Patterns to exclude.
     exclude: [

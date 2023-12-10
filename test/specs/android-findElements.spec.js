@@ -13,7 +13,8 @@ describe('Android Elemets Test',()=>{
         await expect(actionBar).toBeExisting();
 
     })
-
+    
+        //find element using class name
     it('Find elelment by class name', async()=>{
         //find element by class name
         const className = await $('android.widget.TextView');
@@ -27,10 +28,10 @@ describe('Android Elemets Test',()=>{
         await $('android=new UiSelector().textContains("Alert")').click();
     })
 
-    it.only('Find multiple elements',async () =>{
+    it('Find multiple elements',async () =>{
         const expectedList = [
             'API Demos',"Access'ibility",'Accessibility','Animation','App','Content','Graphics',
-        'Media','NFC','OS','Preference']
+        'Media','NFC','OS','Preference','Text','Views']
 
         const actualList = []
         // find multiple elements
@@ -45,6 +46,20 @@ describe('Android Elemets Test',()=>{
         //await expect(actualList).toEqual(expectedList);
     
         })
+    it.only('working with text field',async()=>{
+            //access the auto complete screen
+        await $('~Views').click();
+        await $('~Auto Complete').click();
+        await $('//*[@content-desc="1. Screen Top"]').click();
+
+        //enter country name
+        const textField = await $('//*[@resource-id="io.appium.android.apis:id/edit"]');
+        await textField.addValue('Canada');
+
+        //verify the country name
+        await expect(textField).toHaveText('Canada');
+
+    })
     
 
 
